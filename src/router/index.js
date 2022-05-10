@@ -1,20 +1,50 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/Actualites.vue'
+import actus from '../views/Actualites.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'actusA',
+    component: actus
+  },
+  {
+    path: '/profil',
+    name: 'profilU',
+    // route level code-splitting
+    // this generates a separate chunk (profil.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "profil" */ '../views/Profil.vue')
+  },
+  {
+    path: '/presentation',
+    name: 'presentationA',
+    component: () => import( '../views/Presentation.vue')
+  },
+  {
+    path: '/membres',
+    name: 'membresA',
+    component: () => import( '../views/Membres.vue')
   },
   // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  //   path: '/inscription',
+  //   name: 'inscriptionU',
+  //   component: () => import( '../views/Inscription.vue')
+  // },
+  {
+    path: '/events',
+    name: 'eventsA',
+    component: () => import( '../views/Events.vue')
+  },
+  {
+    path: '/connexion',
+    name: 'connexionU',
+    component: () => import( '../views/Connexion.vue')
+  },
+  {
+    path: '/boutique',
+    name: 'boutiqueU',
+    component: () => import( '../views/Boutique.vue')
+  },
 ]
 
 const router = createRouter({

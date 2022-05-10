@@ -3,7 +3,7 @@
         <img class="activator" id="activator" src="//s.svgbox.net/hero-outline.svg?fill=fff#menu-alt-1" alt="">
         <nav>
             <ul>
-                <li><a href="/actus"><img src="//s.svgbox.net/hero-outline.svg?fill=805ad5#newspaper"></a></li>
+                <li><a href="/"><img src="//s.svgbox.net/hero-outline.svg?fill=805ad5#newspaper"></a></li>
                 <li><a href="/presentation"><img src="//s.svgbox.net/hero-outline.svg?fill=805ad5#book-open"></a></li>
                 <li><a href="/membres"><img src="//s.svgbox.net/hero-outline.svg?fill=805ad5#user-group"></a></li>
                 <li><a href="/events"><img src="//s.svgbox.net/hero-outline.svg?fill=805ad5#calendar"></a></li>
