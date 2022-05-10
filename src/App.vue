@@ -4,8 +4,20 @@
     <router-link to="/about">About</router-link>
   </nav> -->
   <router-view/>
-</template>
+  <navMenu/>
+  <footerRs/>
 
+</template>
+<script>
+    import footerRs from '@/components/Footer.vue'
+    import navMenu from '@/components/Nav.vue'
+    export default {
+        components: {
+            footerRs,
+            navMenu
+        }
+    }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
