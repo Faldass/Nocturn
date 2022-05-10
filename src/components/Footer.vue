@@ -47,6 +47,7 @@
         padding:40px 0;
         color:#83388d;
         position: relative;
+        z-index: 1;
     }
 
     .footer-basic ul {
