@@ -45,6 +45,11 @@ const routes = [
     name: 'boutiqueU',
     component: () => import( '../views/Boutique.vue')
   },
+  {
+    path: '/inscription',
+    name: 'inscriptionU',
+    component: () => import( '../views/Inscritpion.vue')
+  },
 ]
 
 const router = createRouter({
