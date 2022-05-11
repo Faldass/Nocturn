@@ -1,6 +1,6 @@
 <template>
     <div class="bodyF">
-        <form>
+        <form method="POST">
             <h1>Se connecter</h1>
             <div class="social-media">
                 <p><fa :icon="['fab', 'google']"/></p>
@@ -10,14 +10,15 @@
             <p class="choose-email">ou utiliser mon adresse e-mail :</p>
             
             <div class="inputs">
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Mot de passe">
+                <input type="email" name="mail_user" placeholder="Email" />
+                <input type="password" name="psswd_user" placeholder="Mot de passe">
             </div>
             
-            <p class="inscription">Je n'ai pas de <span>compte</span>. Je m'en <a href="/inscription"><span>crée un</span></a>.</p>
+            <p class="inscription">Je n'ai pas de compte. Je m'en <a href="/inscription"><span>crée un</span></a>.</p>
             <div align="center">
                 <button type="submit">Se connecter</button>
             </div>
+            <a href="#"><p class="inscription">Mot de passe oublié ?</p></a>
         </form>
     </div>
 </template>
@@ -117,5 +118,6 @@
         background-color: #eb7371;
         outline:none;
         cursor:pointer;
+        margin-bottom: 10px;
     }
 </style>
