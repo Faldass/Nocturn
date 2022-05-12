@@ -10,12 +10,12 @@
             <p class="choose-email">ou utiliser mon adresse e-mail :</p>
             
             <div class="inputs">
-                <input type="text" name="name_user" placeholder="Nom" />
-                <input type="text" name="surname_user" placeholder="Prénom" />
-                <input type="date" name="age_user" placeholder="Date de naissance" />
-                <input type="number" name="phone_user" placeholder="Téléphone" />
-                <input type="email" name="mail_user" placeholder="Email" />
-                <input type="password" name="psswd_user" placeholder="Mot de passe">
+                <input type="text" v-model="nom" placeholder="Nom" />
+                <input type="text" v-model="prenom" placeholder="Prénom" />
+                <input type="date" v-model="age" placeholder="Date de naissance" />
+                <input type="number" v-model="phone" placeholder="Téléphone" />
+                <input type="email" v-model="mail" placeholder="Email" />
+                <input type="password" v-model="psswd" placeholder="Mot de passe">
             </div>
             
             <p class="inscription">J'ai déjà un compte ? Je me <a href="/connexion"><span>connecte</span></a>.</p>
@@ -27,10 +27,38 @@
 </template>
 
 <script>
+    import axios from "axios";
     export default {
         name: 'inscritpionU',
         components: {
-        }
+        },
+        data() {
+            return {
+                nom: '',
+                prenom: '',
+                age: '',
+                mail: '',
+                psswd: '',
+                phone: '',
+            }
+        },
+        methods: {
+            sendData(){
+                let data = new FormData();
+
+                data.append("nom", this.nom);
+                data.append("prenom", this.prenom);
+                data.append("age", this.age);
+                data.append("mail", this.mail);
+                data.append("psswd", this.psswd);
+                data.append("phone", this.phone);
+
+                axios
+                    .post(
+                        "http://localhost/src/php/createUser.php",data
+                    )
+            }
+        },
     }
 </script>
 
