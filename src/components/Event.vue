@@ -1,6 +1,7 @@
 <template>
     <ul>
-        <li class="booking-card" style="background-image: url(https://images.unsplash.com/photo-1578944032637-f09897c5233d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ)">
+        <!-- <li class="booking-card" style="background-image: url(https://images.unsplash.com/photo-1578944032637-f09897c5233d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ)"> -->
+        <li class="booking-card" style="background-image: url(https://images.pexels.com/photos/1964471/pexels-photo-1964471.jpeg)">
             <div class="book-container">
                 <div class="content">
                     <a href="https://www.facebook.com/" class="btn">Plus d'infos</a>
