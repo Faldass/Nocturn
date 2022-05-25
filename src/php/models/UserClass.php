@@ -1,5 +1,6 @@
 <?php
-class User{
+require_once('config.php');
+class User extends Database{
     private $id_user;
     private $name_user;
     private $surname_user;
@@ -17,7 +18,7 @@ class User{
         $this->phone_user = $phone_user;
         $this->mail_user = $mail_user;
         $this->psswd_user = $psswd_user;
-        $this->register_user = $register_user
+        $this->register_user = $register_user;
     }
 
     public function getId_user()
@@ -123,9 +124,9 @@ class User{
         $req->execute(array(':name_user'=>$name_user,
                             ':mail_user'=>$mail_user,
                             ':psswd_user'=>$psswd_user,
-                            ':surname_user'=>$surname_user
-                            ':age_user'=>$age_user
-                            ':phone_user'=>$phone_user
+                            ':surname_user'=>$surname_user,
+                            ':age_user'=>$age_user,
+                            ':phone_user'=>$phone_user,
                             ':register_user'=>$register_user));
     }
     public function modifyUser($mail_user,$psswd_user,$name_user, $surname_user, $age_user, $phone_user){

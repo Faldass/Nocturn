@@ -1,6 +1,6 @@
 <template>
     <div class="bodyF">
-        <form method="POST">
+        <form method="post" action="" v-on:submit.prevent >
             <h1>S'inscrire</h1>
             <div class="social-media">
                 <p><fa :icon="['fab', 'google']"/></p>
@@ -20,14 +20,14 @@
             
             <p class="inscription">J'ai déjà un compte ? Je me <a href="/connexion"><span>connecte</span></a>.</p>
             <div align="center">
-                <button type="submit">S'inscrire</button>
+                <button type="submit" @click="sendData">S'inscrire</button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import axios from "axios";
+    // import axios from "axios";
     export default {
         name: 'inscritpionU',
         components: {
@@ -44,20 +44,31 @@
         },
         methods: {
             sendData(){
-                let data = new FormData();
+                // let data = new FormData();
 
-                data.append("nom", this.nom);
-                data.append("prenom", this.prenom);
-                data.append("age", this.age);
-                data.append("mail", this.mail);
-                data.append("psswd", this.psswd);
-                data.append("phone", this.phone);
+                // data.append("nom", this.nom);
+                // data.append("prenom", this.prenom);
+                // data.append("age", this.age);
+                // data.append("mail", this.mail);
+                // data.append("psswd", this.psswd);
+                // data.append("phone", this.phone);
+               
+                // axios
+                //     .post("http://localhost/nocturn/src/php/index.php?data=data",data).then((res) => {
+                        
+                //         console.log(res);
+                //     })
 
-                axios
-                    .post(
-                        "http://localhost/src/php/createUser.php",data
-                    )
-            }
+
+                // axios
+                //     .post(
+                //         "http://localhost/nocturn/src/php/index.php?url=inscription ",data
+                //    .then((res) => {
+                //         res.data;
+                //         console.log(res.data);
+                //     }) )
+                //     
+            },
         },
     }
 </script>
