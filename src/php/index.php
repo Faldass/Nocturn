@@ -8,20 +8,14 @@ include("controllers/userController.php");
 
 $userController = new UserController;
 $url = "";
-
-
-
 $data="";
+
 if(isset($_POST["data"])){
   $data=$_POST["data"];
-  $userController->register($data);
-
 }
 
-
 if (isset($_GET['url'])) {
-  $url = $_GET['url'];
-  
+  $url = $_GET['url'];  
 }
 
 switch ($url) {

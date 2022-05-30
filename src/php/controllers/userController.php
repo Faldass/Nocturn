@@ -4,7 +4,7 @@
         private $userManager;
 
         public function __construct(){
-            // $this->userManager = new UserClass();
+            $this->userManager = new User();
         }
         
         public function login(){
@@ -14,12 +14,12 @@
                     "errPsswd"=>"Mot de passe incorrect",
                     "errUser"=>"Utilisateur inexistant",
             ];
-            if(empty($_POST["mail_user"]) || empty($_POST["psswd_user"])){
-                return msg["empty"];
+            if(empty($_POST["mail"]) || empty($_POST["psswd"])){
+                echo json_encode($msg["empty"]);
             }
-            $user = $this->userManager->getOneUser($_POST["mail_user"]);
+            $user = $this->userManager->getOneUser($_POST["mail"]);
             if(!empty($user)){
-                if($_POST["psswd_user"] == $user->getPsswd_user()){
+                if($_POST["psswd"] == $user->getPsswd_user()){
                     return msg["connect"]; 
                 }else{
                     return msg["errPsswd"];
@@ -28,9 +28,7 @@
                 return msg["errUser"];
             }
         }
-        public function register($data){
-           var_dump($data);
-            echo json_encode($data);
+        public function register(){
             $msg=[
                 "empty"=>"Renseigner Tous les champs",
                 "register"=>"Vous êtes inscrit",
@@ -38,24 +36,13 @@
             ];
              
              
-            if(empty($_POST["mail_user"]) || empty($_POST["psswd_user"]) || empty($_POST['name_user']) || empty($_POST['id_user'])){
-                 return $msg["empty"];
-                
-               
-            }
-            if (isset($_POST["nom"])) {
-                var_dump($_POST["nom"]);
-                
-            }
-            echo json_encode($_POST["nom"]);
-            
-            
-            $user = $this->userManager->getOneUser($_POST["mail_user"]);
-            if(!empty($user)){
-                return msg["errUser"];
+            if(empty($_POST["mail"]) || empty($_POST["psswd"]) || empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']) || empty($_POST['phone'])){
+                echo json_encode($msg["empty"]);
+            }else if (!empty($this->userManager->getOneUser($_POST["mail"]))){
+                echo json_encode($msg["errUser"]);
             }else{
-                $this->userManager->createUser($_POST["mail_user"], $_POST["psswd_user"], $_POST['name_user'], $_POST['id_user']);
-                return msg["register"]; 
+                $this->userManager->createUser($_POST["mail"], $_POST["psswd"], $_POST['nom'], $_POST['prenom'],$_POST['age'],$_POST['phone'],"11/12/2022");
+                echo json_encode($msg["register"]); 
             }
         }
     }

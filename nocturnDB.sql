@@ -14,7 +14,7 @@ psswd_user VARCHAR(100) NOT NULL,
 phone_user VARCHAR(20) UNIQUE,
 age_user DATE,
 register_user DATE,
-id_role INTEGER NOT NULL,
+id_role INTEGER,
 FOREIGN KEY(id_role) REFERENCES roles(id_role)
 );
 CREATE TABLE spots(
