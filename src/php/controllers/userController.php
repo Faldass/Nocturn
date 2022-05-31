@@ -2,10 +2,6 @@
     include('models/UserClass.php');
     class UserController{
         private $userManager;
-
-        public function __construct(){
-            $this->userManager = new User();
-        }
         
         public function login(){
             $msg=[
@@ -20,12 +16,12 @@
             $user = $this->userManager->getOneUser($_POST["mail"]);
             if(!empty($user)){
                 if($_POST["psswd"] == $user->getPsswd_user()){
-                    return msg["connect"]; 
+                    echo json_encode($msg["connect"]); 
                 }else{
-                    return msg["errPsswd"];
+                    echo json_encode($msg["errPsswd"]);
                 }
             }else{
-                return msg["errUser"];
+                echo json_encode($msg["errUser"]);
             }
         }
         public function register(){
@@ -35,13 +31,22 @@
                 "errUser"=>"Utilisateur déjà existant",
             ];
              
-             
+            $this->userManager = new User();
+
             if(empty($_POST["mail"]) || empty($_POST["psswd"]) || empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']) || empty($_POST['phone'])){
                 echo json_encode($msg["empty"]);
             }else if (!empty($this->userManager->getOneUser($_POST["mail"]))){
                 echo json_encode($msg["errUser"]);
             }else{
-                $this->userManager->createUser($_POST["mail"], $_POST["psswd"], $_POST['nom'], $_POST['prenom'],$_POST['age'],$_POST['phone'],"11/12/2022");
+                $this->userManager->setName_user(htmlspecialchars(strip_tags($_POST["nom"])));
+                $this->userManager->setSurname_user(htmlspecialchars(strip_tags($_POST["prenom"])));
+                $this->userManager->setAge_user(htmlspecialchars(strip_tags($_POST["age"])));
+                $this->userManager->setPhone_user(htmlspecialchars(strip_tags($_POST["phone"])));
+                $this->userManager->setMail_user(htmlspecialchars(strip_tags($_POST["mail"])));
+                $this->userManager->setPsswd_user(password_hash($_POST["psswd"], PASSWORD_DEFAULT));
+                
+                $this->userManager->createUser();
+
                 echo json_encode($msg["register"]); 
             }
         }

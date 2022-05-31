@@ -11,15 +11,15 @@ class User extends Database{
     private $register_user;
     private $id_role;
 
-    public function __construct($mail_user,$psswd_user,$name_user,$surname_user,$phone_user,$age_user,$register_user){
-        $this->name_user = $name_user;
-        $this->surname_user = $surname_user;
-        $this->age_user = $age_user;
-        $this->phone_user = $phone_user;
-        $this->mail_user = $mail_user;
-        $this->psswd_user = $psswd_user;
-        $this->register_user = $register_user;
-    }
+    // public function __construct($mail_user,$psswd_user,$name_user,$surname_user,$phone_user,$age_user,$register_user){
+    //     $this->name_user = $name_user;
+    //     $this->surname_user = $surname_user;
+    //     $this->age_user = $age_user;
+    //     $this->phone_user = $phone_user;
+    //     $this->mail_user = $mail_user;
+    //     $this->psswd_user = $psswd_user;
+    //     $this->register_user = $register_user;
+    // }
 
     public function getId_user()
     {
@@ -113,21 +113,20 @@ class User extends Database{
         $req-> execute();
         $data = $req->fetch();
         if(!empty($data)){
-            $user = new User($data["mail_user"],$data["psswd_user"],$data["name_user"],$data["surname_user"],$data["phone_user"],$data["age_user"],$data["register_user"]);
-            return $user;
+            return $data;
         }else{
             return null;
         }
     }
-    public function createUser($mail_user,$psswd_user,$name_user, $surname_user, $age_user, $phone_user, $register_user){
+    public function createUser(){
         $req = $this->getDB()->prepare('INSERT INTO users (name_user, mail_user, psswd_user, surname_user, age_user, phone_user, register_user) VALUES (:name_user, :mail_user, :psswd_user, :surname_user, :age_user, :phone_user, :register_user)');
-        $req->execute(array(':name_user'=>$name_user,
-                            ':mail_user'=>$mail_user,
-                            ':psswd_user'=>$psswd_user,
-                            ':surname_user'=>$surname_user,
-                            ':age_user'=>$age_user,
-                            ':phone_user'=>$phone_user,
-                            ':register_user'=>$register_user));
+        $req->execute(array(':name_user'=>$this->name_user,
+                            ':mail_user'=>$this->mail_user,
+                            ':psswd_user'=>$this->psswd_user,
+                            ':surname_user'=>$this->surname_user,
+                            ':age_user'=>$this->age_user,
+                            ':phone_user'=>$this->phone_user,
+                            ':register_user'=>$this->register_user));
     }
     public function modifyUser($mail_user,$psswd_user,$name_user, $surname_user, $age_user, $phone_user){
 
