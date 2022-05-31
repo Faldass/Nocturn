@@ -1,6 +1,6 @@
 <template>
     <div class="bodyF">
-        <form method="POST">
+        <form method="POST" action="" v-on:submit.prevent>
             <h1>Se connecter</h1>
             <div class="social-media">
                 <p><fa :icon="['fab', 'google']"/></p>
@@ -10,13 +10,13 @@
             <p class="choose-email">ou utiliser mon adresse e-mail :</p>
             
             <div class="inputs">
-                <input type="email" name="mail_user" placeholder="Email" />
-                <input type="password" name="psswd_user" placeholder="Mot de passe">
+                <input type="email"  v-model="mail" placeholder="Email" />
+                <input type="password"  v-model="psswd" placeholder="Mot de passe">
             </div>
             
             <p class="inscription">Je n'ai pas de compte. Je m'en <a href="/inscription"><span>crée un</span></a>.</p>
             <div align="center">
-                <button type="submit">Se connecter</button>
+                <button type="submit" @click="sendData()">Se connecter</button>
             </div>
             <a href="#"><p class="inscription">Mot de passe oublié ?</p></a>
         </form>
@@ -24,8 +24,29 @@
 </template>
 
 <script>
+    import axios from "axios";
     export default {
         name: 'connexionU',
+        data(){
+            return{
+               mail: '',
+               psswd: '', 
+            }
+        },
+        methods: {
+            sendData(){
+                let data = new FormData();
+
+                data.append("mail", this.mail);
+                data.append("psswd", this.psswd);
+
+                axios
+                    .post("http://localhost/nocturn/src/php/index.php?url=connexion",data)
+                    .then((res) => { 
+                        console.log(res);
+                    })
+            }
+        },
         mounted() {
             // (function () {
 	        //     'use strict'

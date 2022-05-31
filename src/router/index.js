@@ -25,11 +25,6 @@ const routes = [
     name: 'membresA',
     component: () => import( '../views/Membres.vue')
   },
-  // {
-  //   path: '/inscription',
-  //   name: 'inscriptionU',
-  //   component: () => import( '../views/Inscription.vue')
-  // },
   {
     path: '/events',
     name: 'eventsA',

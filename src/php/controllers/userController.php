@@ -2,6 +2,10 @@
     include('models/UserClass.php');
     class UserController{
         private $userManager;
+
+        public function __construct(){
+            $this->userManager = new User();
+        }
         
         public function login(){
             $msg=[
@@ -10,12 +14,11 @@
                     "errPsswd"=>"Mot de passe incorrect",
                     "errUser"=>"Utilisateur inexistant",
             ];
+
             if(empty($_POST["mail"]) || empty($_POST["psswd"])){
                 echo json_encode($msg["empty"]);
-            }
-            $user = $this->userManager->getOneUser($_POST["mail"]);
-            if(!empty($user)){
-                if($_POST["psswd"] == $user->getPsswd_user()){
+            }else if(!empty($user = $this->userManager->getOneUser($_POST["mail"]))){
+                if(password_verify($_POST["psswd"], $user["psswd_user"])){
                     echo json_encode($msg["connect"]); 
                 }else{
                     echo json_encode($msg["errPsswd"]);
@@ -30,8 +33,6 @@
                 "register"=>"Vous êtes inscrit",
                 "errUser"=>"Utilisateur déjà existant",
             ];
-             
-            $this->userManager = new User();
 
             if(empty($_POST["mail"]) || empty($_POST["psswd"]) || empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['age']) || empty($_POST['phone'])){
                 echo json_encode($msg["empty"]);
