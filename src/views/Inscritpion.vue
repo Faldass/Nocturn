@@ -59,7 +59,11 @@
                     mail: this.mail,
                     psswd: this.psswd,
                     phone: this.phone
-                })
+                }).then((reponse)=>{
+                    console.log(reponse);
+                }, (error)=>{
+                    console.log(error);
+                });
             },
         },
     }

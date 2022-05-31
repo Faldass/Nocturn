@@ -16,7 +16,7 @@
             
             <p class="inscription">Je n'ai pas de compte. Je m'en <a href="/inscription"><span>crée un</span></a>.</p>
             <div align="center">
-                <button type="submit" @click="sendData()">Se connecter</button>
+                <button type="submit" @click="login()">Se connecter</button>
             </div>
             <a href="#"><p class="inscription">Mot de passe oublié ?</p></a>
         </form>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-    import axios from "axios";
     export default {
         name: 'connexionU',
         data(){
@@ -34,18 +33,16 @@
             }
         },
         methods: {
-            sendData(){
-                let data = new FormData();
-
-                data.append("mail", this.mail);
-                data.append("psswd", this.psswd);
-
-                axios
-                    .post("http://localhost/nocturn/src/php/index.php?url=connexion",data)
-                    .then((res) => { 
-                        console.log(res);
-                    })
-            }
+            login(){
+                this.$store.dispatch('login', {
+                    mail: this.mail,
+                    psswd: this.psswd
+                }).then((reponse)=>{
+                    console.log(reponse);
+                }, (error)=>{
+                    console.log(error);
+                });
+            },
         },
         mounted() {
             // (function () {

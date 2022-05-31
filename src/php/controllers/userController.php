@@ -15,6 +15,8 @@
                     "errUser"=>"Utilisateur inexistant",
             ];
 
+            $_POST = json_decode(file_get_contents("php://input"),true);
+            
             if(empty($_POST["mail"]) || empty($_POST["psswd"])){
                 echo json_encode($msg["empty"]);
             }else if(!empty($user = $this->userManager->getOneUser($_POST["mail"]))){
@@ -49,7 +51,7 @@
                 $this->userManager->setPsswd_user(password_hash($_POST["psswd"], PASSWORD_DEFAULT));
                 
                 $this->userManager->createUser();
-                
+
                 echo json_encode($msg["register"]); 
             }
         }
