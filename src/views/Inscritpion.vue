@@ -20,14 +20,13 @@
             
             <p class="inscription">J'ai déjà un compte ? Je me <a href="/connexion"><span>connecte</span></a>.</p>
             <div align="center">
-                <button type="submit" @click="sendData()">S'inscrire</button>
+                <button v-show="checkFields" type="submit" @click="createAccount()">S'inscrire</button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import axios from "axios";
     export default {
         name: 'inscritpionU',
         components: {
@@ -42,32 +41,25 @@
                 phone: '',
             }
         },
+        computed:{
+            checkFields(){
+                if(this.nom != "" && this.prenom != "" && this.age != "" && this.mail != "" && this.psswd != "" && this.phone != ""){
+                    return true;
+                }else{
+                    return false;
+                }
+            },
+        },
         methods: {
-            sendData(){
-                let data = new FormData();
-
-                data.append("nom", this.nom);
-                data.append("prenom", this.prenom);
-                data.append("age", this.age);
-                data.append("mail", this.mail);
-                data.append("psswd", this.psswd);
-                data.append("phone", this.phone);
-               
-                axios
-                    .post("http://localhost/nocturn/src/php/index.php?url=inscription",data)
-                    .then((res) => { 
-                        console.log(res.data);
-                    })
-
-
-                // axios
-                //     .post(
-                //         "http://localhost/nocturn/src/php/index.php?url=inscription ",data
-                //    .then((res) => {
-                //         res.data;
-                //         console.log(res.data);
-                //     }) )
-                //     
+            createAccount(){
+                this.$store.dispatch('createAccount', {
+                    nom: this.nom,
+                    prenom: this.prenom,
+                    age: this.age,
+                    mail: this.mail,
+                    psswd: this.psswd,
+                    phone: this.phone
+                })
             },
         },
     }
