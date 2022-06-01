@@ -59,8 +59,8 @@
                     mail: this.mail,
                     psswd: this.psswd,
                     phone: this.phone
-                }).then((reponse)=>{
-                    console.log(reponse);
+                }).then((res)=>{
+                    console.log(res);
                 }, (error)=>{
                     console.log(error);
                 });

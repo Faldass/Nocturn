@@ -42,17 +42,12 @@ PRIMARY KEY (id_user, id_event),
 FOREIGN KEY(id_user) references users(id_user),
 FOREIGN KEY(id_event) references events(id_event)
 );
-CREATE TABLE missions(
-id_mission INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nom_mission VARCHAR(50) NOT NULL
-);
 CREATE TABLE team(
 id_team INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name_team VARCHAR(75) NOT NULL,
 fb_team VARCHAR(75),
 insta_team VARCHAR(75),
 sc_team VARCHAR(75),
-photo_membre VARCHAR(50) NOT NULL,
-id_mission INTEGER,
-FOREIGN KEY(id_mission) REFERENCES missions(id_mission)
+photo_team VARCHAR(50) NOT NULL,
+mission_team VARCHAR(35)
 );

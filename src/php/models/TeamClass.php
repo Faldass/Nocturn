@@ -6,8 +6,8 @@ class Team extends Database{
     private $fb_team;
     private $insta_team;
     private $sc_team;
-    private $photo_membre;
-    private $id_mission;
+    private $photo_team;
+    private $mission_team;
 
     public function getId_team(){
 		return $this->id_team;
@@ -44,18 +44,18 @@ class Team extends Database{
 		$this->sc_team = $sc_team;
 	}
 
-	public function getPhoto_membre(){
-		return $this->photo_membre;
+	public function getPhoto_team(){
+		return $this->photo_team;
 	}
-	public function setPhoto_membre($photo_membre){
-		$this->photo_membre = $photo_membre;
+	public function setPhoto_team($photo_membre){
+		$this->photo_team = $photo__team;
 	}
 
-	public function getId_mission(){
-		return $this->id_mission;
+	public function getMission_team(){
+		return $this->mission_team;
 	}
-	public function setId_mission($id_mission){
-		$this->id_mission = $id_mission;
+	public function setMission_team($id_mission){
+		$this->mission_team = $mission_team;
 	}
 
     public function getFullTeam(){
@@ -65,7 +65,7 @@ class Team extends Database{
                     team';       
         $req = $this->getDB()->prepare($query);
         $req-> execute();
-        $data = $req->fetch();
+        $data = $req->fetchAll();
         if(!empty($data)){
             return $data;
         }else{

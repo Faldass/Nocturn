@@ -5,8 +5,10 @@ header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content
 header("Content-type:application/json");
 
 include("controllers/userController.php");
+include("controllers/teamController.php");
 
 $userController = new UserController;
+$teamController = new TeamController;
 $url = "";
 
 if (isset($_GET['url'])) {
@@ -20,5 +22,7 @@ switch ($url) {
     case 'connexion':
         $userController->login();
         break;
+    case 'loadTeam':
+        $teamController->loadTeam();
     default;
 }

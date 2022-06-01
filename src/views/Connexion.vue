@@ -37,8 +37,8 @@
                 this.$store.dispatch('login', {
                     mail: this.mail,
                     psswd: this.psswd
-                }).then((reponse)=>{
-                    console.log(reponse);
+                }).then((res)=>{
+                    console.log(res);
                 }, (error)=>{
                     console.log(error);
                 });
