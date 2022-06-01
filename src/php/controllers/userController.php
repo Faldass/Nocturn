@@ -21,7 +21,8 @@
                 echo json_encode($msg["empty"]);
             }else if(!empty($user = $this->userManager->getOneUser($_POST["mail"]))){
                 if(password_verify($_POST["psswd"], $user["psswd_user"])){
-                    echo json_encode($msg["connect"]); 
+                    // echo json_encode($msg["connect"]);
+                    echo json_encode($user);
                 }else{
                     echo json_encode($msg["errPsswd"]);
                 }
