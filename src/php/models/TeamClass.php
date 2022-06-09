@@ -48,13 +48,13 @@ class Team extends Database{
 		return $this->photo_team;
 	}
 	public function setPhoto_team($photo_membre){
-		$this->photo_team = $photo__team;
+		$this->photo_team = $photo_team;
 	}
 
 	public function getMission_team(){
 		return $this->mission_team;
 	}
-	public function setMission_team($id_mission){
+	public function setMission_team($mission_team){
 		$this->mission_team = $mission_team;
 	}
 
@@ -71,5 +71,21 @@ class Team extends Database{
         }else{
             return null;
         }
+    }
+	public function addTeam(){
+        $req = $this->getDB()->prepare('INSERT INTO team (name_team, fb_team, insta_team, sc_team, mission_team) VALUES (:name_team, :fb_team, :insta_team, :sc_team, :mission_team)');
+        $req->execute(array(':name_team'=>$this->name_team,
+                            ':fb_team'=>$this->fb_team,
+                            ':insta_team'=>$this->insta_team,
+                            ':sc_team'=>$this->sc_team,
+                            ':mission_team'=>$this->mission_team));
+    }
+	public function delTeam(){
+		$req = $this->getDB()->prepare('DELETE FROM team WHERE id_team = '. $this->id_team.'');
+        $req->execute();
+	}
+	public function modifTeam(){
+        $req = $this->getDB()->prepare("UPDATE team SET name_team='" . $this->name_team . "', fb_team='" . $this->fb_team . "', insta_team='" .$this->insta_team . "' ,sc_team='" . $this->sc_team . "', mission_team='" . $this->mission_team . "' WHERE id_team='" . $this->id_team . "'");
+        $req->execute();
     }
 }

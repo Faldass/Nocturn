@@ -24,5 +24,15 @@ switch ($url) {
         break;
     case 'loadTeam':
         $teamController->loadTeam();
+        break;
+    case 'addMembre' :
+        $teamController->addMembre();
+        break;
+    case 'delMembre' :
+        $teamController->delMembre();
+        break;
+    case 'modifMembre' :
+        $teamController->modifMembre();
+        break;
     default;
 }

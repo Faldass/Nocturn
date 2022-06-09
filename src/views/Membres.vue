@@ -1,9 +1,11 @@
 <template>
     <h1>Membres</h1>
+    <router-link to="/ajouterMembre">Ajoter-Modifier-Supprimer</router-link>
     <div class="bodyC">
     <div 
-    v-for="(team, index) in this.loadTeam"  :key="index"
-    class="container">
+        v-for="(team, index) in this.loadTeam"  :key="index"
+        class="container"
+    >
         <div class="row">
             <div class="col-lg-4">
                 <div class="card p-0">
@@ -49,13 +51,12 @@
     export default {
         name: 'membresA',
         components: {
-            // membreA,
         },
         data() {
             return {
             }
         },
-         created: function () {
+        created: function () {
             this.$store.dispatch('loadTeam');
         },
         computed: {
@@ -86,7 +87,6 @@
 
     .container {
         margin-top: 50px;
-        /* margin-bottom: 50px; */
     }
 
     .container .row .col-lg-4 {

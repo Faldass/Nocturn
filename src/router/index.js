@@ -45,6 +45,11 @@ const routes = [
     name: 'inscriptionU',
     component: () => import( '../views/Inscritpion.vue')
   },
+  {
+    path: '/ajouterMembre',
+    name: 'addMembres',
+    component: () => import( '../views/AddMembres.vue')
+  },
 ]
 
 const router = createRouter({

@@ -31,7 +31,7 @@ export default createStore({
     }
   },
   actions: {
-    //gestion des memmbres
+    //gestion des membres
     loadTeam({commit}){
       instance.post("?url=loadTeam")
         .then((res) => { 
@@ -40,6 +40,42 @@ export default createStore({
         .catch((error) => {
           console.log(error);
         });
+    },
+    addMembre:({commit}, membreInfos) =>{
+      return new Promise((resolve, reject) => {
+        commit;
+        instance.post("?url=addMembre", membreInfos)
+        .then((res) => { 
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+      });
+    },
+    delMembre:({commit}, idMembre) =>{
+      return new Promise((resolve, reject) => {
+        commit;
+        instance.post("?url=delMembre", idMembre)
+        .then((res) => { 
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+      });
+    },
+    modifMembre:({commit}, newInfos) =>{
+      return new Promise((resolve, reject) => {
+        commit;
+        instance.post("?url=modifMembre", newInfos)
+        .then((res) => { 
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+      });
     },
 
     //gestion des users
